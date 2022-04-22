@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.listedecourse">
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@android:drawable/checkbox_on_background"
+        android:label="To Do List"
+        android:roundIcon="@android:drawable/checkbox_on_background"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ListeDeCourse">
+        <activity
+            android:name=".ClockActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListSauvgarde"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Liste"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

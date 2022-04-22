@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Liste de course</string>
+    <string name="saved">Sauvgarde réussi</string>
+    <string name="error_happened">une erreur c\'est produite lors de la sauvgarde</string>
+    <string name="done">done</string>
+    <string name="alert">Une seul liste peu être enregistrer\nles \",\" ne sont pas acceptée.</string>
+</resources>

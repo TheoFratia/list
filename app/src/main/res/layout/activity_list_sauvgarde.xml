@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:fillViewport="false">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Liste">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:src="@drawable/logo"
+            android:layout_gravity="top"
+            android:scaleX="3"
+            android:scaleY="3"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_baseline_warning_24"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red"
+                android:text="@string/alert"
+                android:textSize="14dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Nom"
+            android:gravity="center"
+            android:background="@android:color/transparent"
+            android:textColor="@color/black"
+            android:textSize="25dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:layout_width="200dp"
+                android:id="@+id/editAjout"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:hint="Ajouter des éléments"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/Ajouter"
+                android:layout_width="50dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center"
+                android:background="@drawable/rounded"
+                android:text="+"
+                android:textColor="@color/white"
+                android:textSize="25dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="160dp"
+                android:layout_height="45dp"
+                android:id="@+id/Generer"
+                android:text="réinitialiser"
+                android:background="@drawable/rounded"
+                android:layout_marginTop="10dp"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="160dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/Save"
+                android:text="Sauvgarder"
+                android:background="@drawable/rounded"
+                android:layout_marginTop="10dp"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"/>
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/clock"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="Rappel"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded"/>
+        <ListView
+            android:id="@+id/Test"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="400dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
+</ScrollView>

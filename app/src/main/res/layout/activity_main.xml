@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_height="150dp"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:src="@drawable/logo"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_baseline_warning_24"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            android:text="Les &quot;,&quot; ne sont pas acceptée."
+            android:textSize="18dp"
+            android:layout_marginLeft="5dp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/idNom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        android:hint="Entrer le nom de la liste"
+        android:inputType="text"
+        android:maxLines="1"
+        android:minHeight="48dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:text="Valider"
+        android:textColor="@color/white"
+        android:background="@drawable/rounded"
+        android:id="@+id/valide"
+        android:layout_gravity="center"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:background="@drawable/rounded"
+        android:id="@+id/Read"
+        android:layout_gravity="center"
+        android:text="Ma dérniere Liste"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"/>
+    <androidx.appcompat.widget.AppCompatButton
+    android:layout_width="300dp"
+    android:layout_height="45dp"
+    android:background="@drawable/rounded"
+    android:id="@+id/Clock"
+    android:layout_gravity="center"
+    android:text="Crée un rappel"
+    android:textColor="@color/white"
+    android:layout_marginTop="10dp"/>
+
+</LinearLayout>
