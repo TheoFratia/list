@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/delet"
+        android:icon="@drawable/ic_baseline_delete_24"
+        android:title="reinitialiser"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/refresh"
+        android:icon="@drawable/ic_baseline_refresh_24"
+        android:title="reinitialiser"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/alarm"
+        android:checkable="false"
+        android:icon="@drawable/ic_baseline_alarm_24"
+        android:title="rappel"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/share"
+        android:icon="@drawable/ic_baseline_share_24"
+        android:title="partager"
+        app:showAsAction="always" />
+</menu>

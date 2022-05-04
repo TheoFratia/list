@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.listedecourse">
-    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
-
     <application
         android:allowBackup="true"
-        android:icon="@android:drawable/checkbox_on_background"
+        android:icon="@drawable/course"
         android:label="To Do List"
-        android:roundIcon="@android:drawable/checkbox_on_background"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.ListeDeCourse">
+        android:roundIcon="@drawable/course"
+        android:theme="@style/OneTheme">
         <activity
             android:name=".ClockActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan|stateAlwaysVisible"/>
         <activity
             android:name=".ListSauvgarde"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateAlwaysVisible"
+            android:theme="@style/OneTheme"/>
         <activity
-            android:name=".Liste"
+            android:name=".ListeActivity"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateAlwaysVisible"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

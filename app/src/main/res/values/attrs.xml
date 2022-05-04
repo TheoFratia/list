@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="custom_red" format="color" />
+    <attr name="custom_blue" format="color" />
+    <attr name="custom_green" format="color" />
+</resources>

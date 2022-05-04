@@ -32,6 +32,7 @@ public class ClockActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityClockBinding.inflate(getLayoutInflater());
         setTheme(R.style.Base_Theme_AppCompat_Light);
+        getSupportActionBar().hide();
         View view = binding.getRoot();
         setContentView(view);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);

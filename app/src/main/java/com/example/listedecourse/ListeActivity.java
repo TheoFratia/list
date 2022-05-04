@@ -2,24 +2,31 @@ package com.example.listedecourse;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.app.ActionBar;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.listedecourse.databinding.ActivityListSauvgardeBinding;
+import com.example.listedecourse.databinding.ActivityListeBinding;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -27,18 +34,20 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class ListSauvgarde extends AppCompatActivity {
-    private ActivityListSauvgardeBinding binding;
+public class ListeActivity extends AppCompatActivity {
+    private ActivityListeBinding binding;
     private String Ajout;
     private String Nom;
-    private boolean del = false;
+    private boolean readable = false;
+    private int indexFile = 0;
+    private List sauvgarde;
     // Create a List from String Array elements
     List<String> random_list = new ArrayList<String>(Arrays.asList());
-    private List sauvgarde;
 
     // 1 - FILE PURPOSE
     private String FILENAME = "tripBook";
     private static final String FOLDERNAME = "bookTrip";
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -52,7 +61,7 @@ public class ListSauvgarde extends AppCompatActivity {
             case R.id.share:
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, random_list.toString().replace("[", "").replace("]", "").replace(",","\n").trim());
+                sendIntent.putExtra(Intent.EXTRA_TEXT, random_list.toString().replace("[", "").replace("]", "").replace(",","\n").replace(" ","").trim());
                 sendIntent.setType("text/plain");
                 startActivity(sendIntent);
                 return true;
@@ -61,10 +70,10 @@ public class ListSauvgarde extends AppCompatActivity {
                 Nom = binding.Nom.getText().toString();
                 if (!Nom.equals("") && !Nom.equals(" ")){
                     save();
-                    Intent intent = new Intent(ListSauvgarde.this, ClockActivity.class);
+                    Intent intent = new Intent(ListeActivity.this, ClockActivity.class);
                     intent.putExtra("Nom", Nom );
                     startActivity(intent);
-                }else {Toast.makeText(ListSauvgarde.this,"Veuillez ne pas laisser le nom vide", Toast.LENGTH_SHORT).show();}
+                }else {Toast.makeText(ListeActivity.this,"Veuillez ne pas laisser le nom vide", Toast.LENGTH_SHORT).show();}
                 return true;
 
             case R.id.refresh:
@@ -74,7 +83,7 @@ public class ListSauvgarde extends AppCompatActivity {
                         i--;
                         updateAdapter();
                     }catch (Exception e){
-                        Toast.makeText(ListSauvgarde.this, "Votre list a bien été réinitialiser",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ListeActivity.this, "Votre list a bien été réinitialiser",Toast.LENGTH_SHORT).show();
                         setvisibility();
                     }
                 }
@@ -112,44 +121,23 @@ public class ListSauvgarde extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityListSauvgardeBinding.inflate(getLayoutInflater());
+
+        /* Section Creat View */
+
+        binding = ActivityListeBinding.inflate(getLayoutInflater());
         setTheme(R.style.OneTheme);
         getSupportActionBar().setTitle("");
         View view = binding.getRoot();
         setContentView(view);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         registerForContextMenu(binding.Test);
-        FILENAME += String.valueOf(getIntent().getExtras().getInt("indice")) + ".txt";
+
+        /* End Creat View */
 
 
-        for (int i=0 ; i<=random_list.size();i++){
-            try {
-                random_list.remove(i);
-                i--;
-            }catch (Exception e){
-
-            }
-        }
-
-
-        readFromStorage();
-        String[] words = sauvgarde.toString().split(",");
-        Nom = words[0].replace("[", "").replace("]", "");
+        Nom = getIntent().getExtras().getString("Nom");
         TextView tvnom = findViewById(R.id.Nom);
         tvnom.setText(Nom);
-        for ( int i=1; i<words.length; i++){
-            String list = words[i].trim();
-            list = list.replace("[", "").replace("]", "").replace("  ", "");
-            if (!words[i].equals("[") && !words[i].equals("]") && !list.equals("\n\n") && !list.equals("\n")) {
-                list =list.replace("\n","");
-                random_list.add(list);
-            }
-        }
-        updateAdapter();
-        setvisibility();
-        Toast.makeText(ListSauvgarde.this, "Votre dernière liste a bien été charger",Toast.LENGTH_SHORT).show();
-
-
 
         binding.Ajouter.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -161,22 +149,47 @@ public class ListSauvgarde extends AppCompatActivity {
                     updateAdapter();
                     binding.editAjout.setText("");
                 }
-                updateAdapter();
                 setvisibility();
             }
         });
+    }
 
-        //binding.Suppr.setOnClickListener(new View.OnClickListener(){
-        //    @Override
-        //    public void onClick(View v) {
-        //        Nom = "null";
-        //        binding.Nom.setText(Nom);
-        //        del = true;
-        //        Intent intent = new Intent(ListSauvgarde.this, MainActivity.class);
-        //        startActivity(intent);
-        //        finish();
-        //    }
-        //});
+    private void updateAdapter (){
+        ListView ListView = findViewById(R.id.Test);
+        // Create an ArrayAdapter from List
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
+                (ListeActivity.this, R.layout.adapter, R.id.text_view, random_list);
+        ListView.setAdapter(arrayAdapter);
+        arrayAdapter.notifyDataSetChanged();
+    }
+
+    private void save() {
+        Nom = binding.Nom.getText().toString();
+        if (!Nom.equals("") && !Nom.equals(" ")) {
+            File directory;
+            directory = getFilesDir();
+            StorageUtils.setTextInStorage(directory, this, FILENAME, FOLDERNAME, Nom + "," + random_list.toString());
+            Toast.makeText(ListeActivity.this, "Sauvegarde réussi", Toast.LENGTH_LONG).show();
+        }else {Toast.makeText(ListeActivity.this, "Veuillez entrer un nom pour votre liste", Toast.LENGTH_LONG).show();}
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Intent intent = new Intent(ListeActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void setvisibility(){
+        if(!random_list.isEmpty()) {
+            binding.vide.setVisibility(View.GONE);
+            binding.Test.setVisibility(View.VISIBLE);
+        }else {
+            binding.vide.setVisibility(View.VISIBLE);
+            binding.Test.setVisibility(View.GONE);
+        }
     }
 
     private void readFromStorage() {
@@ -187,48 +200,24 @@ public class ListSauvgarde extends AppCompatActivity {
         sauvgarde = Collections.singletonList(StorageUtils.getTextFromStorage(directory, this, FILENAME, FOLDERNAME));
     }
 
-    private void save() {
-        if (!Nom.equals("") && !Nom.equals(" ")) {
-            File directory;
-            directory = getFilesDir();
-            StorageUtils.setTextInStorage(directory, this, FILENAME, FOLDERNAME, Nom + "," + random_list.toString());
-            if (del == false){Toast.makeText(ListSauvgarde.this, "Sauvegarde réussi", Toast.LENGTH_LONG).show();}
-        }else {Toast.makeText(ListSauvgarde.this, "Veuillez entrer un nom pour votre liste", Toast.LENGTH_LONG).show();}
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
-        Intent intent = new Intent(ListSauvgarde.this, MainActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
     @Override
     protected void onPause() {
         super.onPause();
         Nom = binding.Nom.getText().toString();
         if (!Nom.equals("") && !Nom.equals(" ")){
+            Nom = binding.Nom.getText().toString();
+            while(readable == false){
+                FILENAME = "tripBook" + String.valueOf(indexFile) + ".txt";
+                readFromStorage();
+                String[] words = sauvgarde.toString().split(",");
+                if (!words[0].replace("[", "").replace("]", "").equals("null")) {indexFile += 1;}
+                else {
+                    FILENAME = "tripBook" + String.valueOf(indexFile) + ".txt";
+                    readable = true;
+                }
+            }
             save();
-        }else{Toast.makeText(ListSauvgarde.this, "La liste n'a pas pu etre sauvegarder", Toast.LENGTH_LONG).show();}
-    }
-
-    private void updateAdapter (){
-        ListView ListView = findViewById(R.id.Test);
-        // Create an ArrayAdapter from List
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
-                (ListSauvgarde.this, R.layout.adapter, R.id.text_view, random_list);
-        ListView.setAdapter(arrayAdapter);
-        arrayAdapter.notifyDataSetChanged();
-    }
-    private void setvisibility(){
-        if(!random_list.isEmpty()) {
-            binding.vide.setVisibility(View.GONE);
-            binding.Test.setVisibility(View.VISIBLE);
-        }else {
-            binding.vide.setVisibility(View.VISIBLE);
-            binding.Test.setVisibility(View.GONE);
-        }
+            Toast.makeText(ListeActivity.this,"Sauvegarde réussi", Toast.LENGTH_LONG).show();
+        }else{Toast.makeText(ListeActivity.this, "La liste n'a pas pu etre sauvegarder", Toast.LENGTH_LONG).show();}
     }
 }

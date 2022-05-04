@@ -1,125 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="10dp"
-    android:fillViewport="false">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Liste">
-
+    android:background="@color/blue"
+    android:orientation="vertical"
+    android:gravity="top"
+    tools:context=".ListeActivity">
+    <!-- Start Section shadow Toolbar !-->
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/shadow"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/shadow1"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/shadow2"/>
+    <!-- Section shadow Toolbar !-->
+
+    <ImageView
         android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:src="@drawable/logo"
+        android:scaleX="3"
+        android:scaleY="3"/>
+
+    <EditText
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/Nom"
+        android:layout_marginBottom="40dp"
         android:gravity="center"
-        android:orientation="vertical">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:src="@drawable/logo"
-            android:layout_gravity="top"
-            android:scaleX="3"
-            android:scaleY="3"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:background="@drawable/ic_baseline_warning_24"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/red"
-                android:text="@string/alert"
-                android:textSize="14dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:textStyle="bold"/>
-        </LinearLayout>
+        android:background="@android:color/transparent"
+        android:textColor="@color/accent"
+        android:lines="1"
+        android:inputType="textShortMessage|textAutoCorrect|textCapSentences"
+        android:maxLength="2000"
+        android:textSize="25dp"/>
+
+    <ListView
+        android:id="@+id/Test"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:visibility="gone"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/vide2"
+        android:layout_gravity="center"
+        android:scaleY="1.3"
+        android:id="@+id/vide"/>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/Ajouter"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="15dp"
+        android:layout_gravity="right"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/rounded"
+        android:text="+"
+        android:textColor="@color/edit"
+        android:textSize="30dp"/>
+
+
+    <!-- Section shadow EditText !-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/shadow2"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/shadow1"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/shadow"/>
+    <!-- Section shadow EditText !-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:outlineSpotShadowColor="@color/black"
+        android:orientation="vertical"
+        android:background="@color/edit">
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/Nom"
-            android:gravity="center"
-            android:background="@android:color/transparent"
-            android:textColor="@color/black"
-            android:textSize="25dp"/>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
-
-            <EditText
-                android:layout_width="200dp"
-                android:id="@+id/editAjout"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:hint="Ajouter des éléments"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/Ajouter"
-                android:layout_width="50dp"
-                android:layout_height="45dp"
-                android:layout_marginLeft="15dp"
-                android:layout_gravity="center"
-                android:background="@drawable/rounded"
-                android:text="+"
-                android:textColor="@color/white"
-                android:textSize="25dp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="160dp"
-                android:layout_height="45dp"
-                android:id="@+id/Generer"
-                android:text="réinitialiser"
-                android:background="@drawable/rounded"
-                android:layout_marginTop="10dp"
-                android:textSize="15dp"
-                android:textColor="#FFFFFF"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="160dp"
-                android:layout_height="45dp"
-                android:layout_marginLeft="10dp"
-                android:id="@+id/Save"
-                android:text="Sauvgarder"
-                android:background="@drawable/rounded"
-                android:layout_marginTop="10dp"
-                android:textSize="15dp"
-                android:textColor="#FFFFFF"/>
-        </LinearLayout>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/clock"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:text="Rappel"
-            android:textColor="@color/white"
-            android:background="@drawable/rounded"/>
-        <ListView
-            android:id="@+id/Test"
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="400dp" />
-
+            android:layout_width="360dp"
+            android:id="@+id/editAjout"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:textColor="@color/accent"
+            android:backgroundTint="@color/white"
+            android:textColorHint="@color/accent"
+            android:lines="1"
+            android:hint="Ajouter des éléments"
+            android:inputType="textShortMessage|textAutoCorrect|textCapSentences"
+            android:maxLength="2000"/>
     </LinearLayout>
-
 </LinearLayout>
-</ScrollView>

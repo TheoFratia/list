@@ -3,6 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="@color/blue"
     android:padding="10dp"
     android:fillViewport="false">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -68,21 +69,22 @@
         <DatePicker
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:calendarViewShown="false"
             android:id="@+id/day"
             android:layout_marginTop="10dp"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:theme="@style/Day"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/set"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="20dp"
             android:background="@drawable/rounded"
             android:minHeight="48dp"
             android:text="Définir un rappel"
-            android:textColor="@color/white" />
+            android:textColor="@color/edit" />
 
     </LinearLayout>
 </ScrollView>
