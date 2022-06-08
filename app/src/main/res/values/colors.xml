@@ -9,6 +9,7 @@
     <color name="shadow">#54000000</color>
     <color name="shadow1">#39000000</color>
     <color name="shadow2">#1B000000</color>
+    <color name="grey">#D1BEBE</color>
     <color name="white">#FFFFFFFF</color>
     <color name="accent">#FFFFFF</color>
     <color name="red">#FF0000</color>

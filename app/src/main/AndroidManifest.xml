@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.listedecourse">
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/course"
@@ -8,20 +9,23 @@
         android:roundIcon="@drawable/course"
         android:theme="@style/OneTheme">
         <activity
+            android:name=".SelectMealActivity"
+            android:exported="false" />
+        <activity
             android:name=".ClockActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan|stateAlwaysVisible"/>
+            android:windowSoftInputMode="adjustPan|stateAlwaysVisible" />
         <activity
             android:name=".ListSauvgarde"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateAlwaysVisible"
-            android:theme="@style/OneTheme"/>
+            android:theme="@style/OneTheme"
+            android:windowSoftInputMode="adjustPan|stateAlwaysVisible" />
         <activity
             android:name=".ListeActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateAlwaysVisible"/>
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

@@ -44,12 +44,16 @@
         android:maxLength="2000"
         android:textSize="25dp"/>
 
-    <ListView
-        android:id="@+id/Test"
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:visibility="gone"/>
+        <ListView
+            android:id="@+id/Test"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:background="@drawable/border"/>
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="150dp"
@@ -59,6 +63,7 @@
         android:scaleY="1.3"
         android:id="@+id/vide"/>
     <Space
+        android:id="@+id/space"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"/>
@@ -75,7 +80,6 @@
         android:text="+"
         android:textColor="@color/edit"
         android:textSize="30dp"/>
-
 
     <!-- Section shadow EditText !-->
     <LinearLayout
@@ -97,6 +101,7 @@
         android:outlineSpotShadowColor="@color/black"
         android:orientation="vertical"
         android:background="@color/edit">
+
         <EditText
             android:layout_width="360dp"
             android:id="@+id/editAjout"

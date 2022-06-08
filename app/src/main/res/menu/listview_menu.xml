@@ -4,6 +4,9 @@
         android:id="@+id/supp"
         android:title="Supprimer"/>
     <item
+        android:id="@+id/cop"
+        android:title="Copier"/>
+    <item
         android:id="@+id/modif"
         android:title="Modifier"/>
 </menu>

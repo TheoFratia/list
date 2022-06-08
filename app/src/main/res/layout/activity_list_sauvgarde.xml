@@ -8,7 +8,7 @@
     android:background="@color/blue"
     android:orientation="vertical"
     android:gravity="top"
-    tools:context=".ListeActivity">
+    tools:context=".ListSauvgarde">
     <!-- Start Section shadow Toolbar !-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,8 +47,11 @@
     <ListView
         android:id="@+id/Test"
         android:layout_marginTop="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:layout_width="wrap_content"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border"
         android:visibility="gone"/>
     <ImageView
         android:layout_width="wrap_content"
@@ -59,25 +62,54 @@
         android:scaleY="1.3"
         android:id="@+id/vide"/>
     <Space
+        android:id="@+id/space"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/Ajouter"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginLeft="15dp"
-        android:layout_gravity="right"
-        android:layout_marginBottom="15dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/rounded"
-        android:text="+"
-        android:textColor="@color/edit"
-        android:textSize="30dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/RepasVisibility"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/accent"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="5dp"
+            android:text="repas :"
+            android:textSize="20dp"/>
+        <TextView
+            android:id="@+id/countRepas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/accent"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:textSize="20dp"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/Ajouter"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:background="@drawable/rounded"
+            android:text="+"
+            android:textColor="@color/edit"
+            android:textSize="37dp"/>
+    </LinearLayout>
 
 
-    <!-- Section shadow EditText !-->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="2dp"
@@ -90,24 +122,24 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/shadow"/>
-    <!-- Section shadow EditText !-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:outlineSpotShadowColor="@color/black"
         android:orientation="vertical"
         android:background="@color/edit">
+
         <EditText
-            android:layout_width="360dp"
             android:id="@+id/editAjout"
-            android:layout_height="45dp"
+            android:layout_width="356dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:textColor="@color/accent"
             android:backgroundTint="@color/white"
-            android:textColorHint="@color/accent"
-            android:lines="1"
             android:hint="Ajouter des éléments"
             android:inputType="textShortMessage|textAutoCorrect|textCapSentences"
-            android:maxLength="2000"/>
+            android:lines="1"
+            android:maxLength="2000"
+            android:textColor="@color/accent"
+            android:textColorHint="@color/accent" />
     </LinearLayout>
 </LinearLayout>

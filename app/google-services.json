@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "880490117951",
+    "project_id": "listedecourse-56961",
+    "storage_bucket": "listedecourse-56961.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:880490117951:android:26b8d3b8fc11a7ae4bf18a",
+        "android_client_info": {
+          "package_name": "com.example.listedecourse"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "880490117951-hlu37ihlcc4clh08voumk8ltl6vlj5i4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmHQ46trYIpfKeQqsSDLwha2KV2y9hWRI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "880490117951-hlu37ihlcc4clh08voumk8ltl6vlj5i4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

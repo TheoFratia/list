@@ -1,10 +1,9 @@
 package com.example.listedecourse;
 
-import static android.graphics.ColorSpace.Model.RGB;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ListActivity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -75,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setTheme(R.style.Base_Theme_AppCompat_Light);
+        setTheme(R.style.OneTheme);
         getSupportActionBar().hide();
         View view = binding.getRoot();
         setContentView(view);
@@ -200,7 +199,23 @@ public class MainActivity extends AppCompatActivity {
                         random_list.add(words[0].replace("[", "").replace("]", "").trim());
                         indexFile += 3;
                     } else {
-                        readable = false;
+                        FILENAME = "tripBook" + String.valueOf(indexFile + 3) + ".txt";
+                        readFromStorage();
+                        words = sauvgarde.toString().split(",");
+                        if (!words[0].replace("[", "").replace("]", "").replace("\n", "").equals("null") && !random_list.contains(words[0].replace("[", "").replace("]", "").replace("\n", ""))) {
+                            random_list.add(words[0].replace("[", "").replace("]", "").trim());
+                            indexFile += 4;
+                        } else {
+                            FILENAME = "tripBook" + String.valueOf(indexFile + 4) + ".txt";
+                            readFromStorage();
+                            words = sauvgarde.toString().split(",");
+                            if (!words[0].replace("[", "").replace("]", "").replace("\n", "").equals("null") && !random_list.contains(words[0].replace("[", "").replace("]", "").replace("\n", ""))) {
+                                random_list.add(words[0].replace("[", "").replace("]", "").trim());
+                                indexFile += 5;
+                            } else {
+                                readable = false;
+                            }
+                        }
                     }
                 }
             }

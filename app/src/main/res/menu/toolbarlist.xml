@@ -2,6 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/meal"
+        android:icon="@drawable/ic_baseline_fastfood_24"
+        android:title="Ajouter un repas"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/delet"
         android:icon="@drawable/ic_baseline_delete_24"
         android:title="reinitialiser"
